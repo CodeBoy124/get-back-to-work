@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Get back to work</title>
+
+  <style>
+    body>div {
+      display: none;
+    }
+
+    body>div.active {
+      display: block;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="select" class="active">
+    <button id="select-zero">No break</button>
+    <button id="select-five">5 min. break</button>
+    <button id="select-fifteen">15 min. break</button>
+  </div>
+  <div id="timer">
+    <h1 id="timer-countdown">00:00</h1>
+  </div>
+  <div id="productive">
+    <button id="productive-break">Get a break</button>
+  </div>
+
+  <script src="./main.js"></script>
+</body>
+
+</html>
