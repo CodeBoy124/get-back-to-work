@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Get back to work | Timer</title>
+  </head>
+
+  <body>
+    <button id="start">Start</button>
+
+    <h1 id="time">00:00</h1>
+
+    <audio
+      id="sound"
+      src="./sounds/old-fashioned-clock-sound-37729.mp3"
+      loop
+    ></audio>
+
+    <script>
+      // get the 't' param from the search parameters
+      const params = new URLSearchParams(window.location.search)
+      const t = params.get('t')
+
+      // function to format seconds to "<minutes>:<seconds>"
+      function formatTime(rawSeconds) {
+        const minutes = Math.floor(rawSeconds / 60)
+        const seconds = rawSeconds % 60
+        return `${minutes.toString().padStart(2, '0')}:${seconds
+          .toString()
+          .padStart(2, '0')}`
+      }
+
+      // keep track of time
+      const timeElement = document.getElementById('time')
+      let secondsToGo = parseInt(t)
+      timeElement.innerText = formatTime(secondsToGo)
+      function start() {
+        setInterval(() => {
+          secondsToGo -= 1
+          if (secondsToGo == 10) document.getElementById('sound').play()
+          console.log(secondsToGo)
+          if (secondsToGo <= 0) window.location.href = './timesup.html'
+          timeElement.innerText = formatTime(secondsToGo)
+        }, 1000)
+      }
+      document.getElementById('start').addEventListener('click', start)
+    </script>
+  </body>
+</html>
