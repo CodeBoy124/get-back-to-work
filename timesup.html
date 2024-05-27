@@ -10,11 +10,9 @@
     <a href="./productive.html"><button>Ready to WORK</button></a>
     <a href="#" id="motivation" target="_blank"><button>Motivation</button></a>
     <script>
-      // functionality for #motivation. Look for a url param called 'motivation' and add it to the href
-      const url = new URL(window.location.href)
-      const motivation = url.searchParams.get('motivation')
-      if (motivation) {
-        document.getElementById('motivation').href = motivation
+      if (localStorage.getItem('motivation') != null) {
+        document.getElementById('motivation').href =
+          localStorage.getItem('motivation')
       }
     </script>
   </body>

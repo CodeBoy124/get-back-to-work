@@ -16,7 +16,12 @@
       const url = new URL(window.location.href)
       const motivation = url.searchParams.get('motivation')
       if (motivation) {
-        document.getElementById('motivation').href = motivation
+        localStorage.setItem('motivation', motivation)
+      }
+
+      if (localStorage.getItem('motivation') != null) {
+        document.getElementById('motivation').href =
+          localStorage.getItem('motivation')
       }
     </script>
   </body>
