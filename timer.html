@@ -4,12 +4,14 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Get back to work | Timer</title>
+    <link rel="stylesheet" href="./style.css" />
   </head>
 
   <body>
-    <button id="start">Start</button>
-
-    <h1 id="time">00:00</h1>
+    <div class="center">
+      <button id="start" class="big">Start</button>
+      <h1 id="time">00:00</h1>
+    </div>
 
     <audio
       id="sound"
@@ -31,11 +33,13 @@
           .padStart(2, '0')}`
       }
 
+      const startButton = document.getElementById('start')
       // keep track of time
       const timeElement = document.getElementById('time')
       let secondsToGo = parseInt(t)
       timeElement.innerText = formatTime(secondsToGo)
       function start() {
+        startButton.remove()
         setInterval(() => {
           secondsToGo -= 1
           if (secondsToGo == 10) document.getElementById('sound').play()
@@ -44,7 +48,7 @@
           timeElement.innerText = formatTime(secondsToGo)
         }, 1000)
       }
-      document.getElementById('start').addEventListener('click', start)
+      startButton.addEventListener('click', start)
     </script>
   </body>
 </html>
